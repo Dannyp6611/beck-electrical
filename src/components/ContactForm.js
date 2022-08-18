@@ -76,7 +76,7 @@ const ContactForm = () => {
   return (
     <StyledContactForm
       name="contact v1"
-      method="post"
+      method="POST"
       data-netlify="true"
       onSubmit={handleSubmit}
     >
