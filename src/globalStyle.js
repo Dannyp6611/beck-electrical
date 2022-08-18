@@ -12,22 +12,36 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Manrope', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 html {
   font-size: 62.5%;
   box-sizing: inherit;
+  scroll-behavior: smooth;
 }
 
-@media only screen and (max-width: 768px) {
+
+
+@media only screen and (max-width: 800px) {
+  html {
+    font-size: 58%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
   html {
     font-size: 55%;
   }
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 1.4;
   font-weight: 400;
   color: var(--body-copy);

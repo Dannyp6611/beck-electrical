@@ -3,12 +3,27 @@ import styled from 'styled-components';
 import servicesKitchen from '../assets/services_kitchen.jpg';
 import servicesOutdoor from '../assets/services_outdoor.jpg';
 import servicesBathroom from '../assets/services_bathroom.jpg';
+import { motion } from 'framer-motion';
+import { fade } from '../animation';
+import { useScroll } from './useScroll';
+import lightsVideo from '../assets/lights.mp4';
 
 const ServicesSection = () => {
+  const [element, controls] = useScroll();
+
   return (
-    <StyledServices>
+    <StyledServices
+      variants={fade}
+      ref={element}
+      animate={controls}
+      initial="hidden"
+      id="services"
+    >
       <div className="services__content">
-        <h2>Services</h2>
+        <div className="heading">
+          <h2>Services</h2>
+          <span className="dot"></span>
+        </div>
         <ul>
           <li>
             <img src={servicesKitchen} alt="" />
@@ -46,28 +61,40 @@ const ServicesSection = () => {
       </div>
       {/* services image */}
       <div className="services__image">
-        <img src={servicesImage} alt="" />
+        <video autoPlay loop muted>
+          <source src={lightsVideo} type="video/mp4" />
+          Sorry, your browser doesn't support embedded videos.
+        </video>
       </div>
     </StyledServices>
   );
 };
 
-const StyledServices = styled.section`
+const StyledServices = styled(motion.section)`
   display: flex;
 
-  .services__content {
-    h2 {
-      font-size: 4rem;
-      color: var(--primary);
-      margin-bottom: 2.6rem;
-      padding-bottom: 0.5rem;
+  @media only screen and (max-width: 1140px) {
+    flex-direction: column-reverse;
+  }
 
-      &::after {
-        content: '';
-        width: 25rem;
-        height: 3px;
-        display: block;
-        background-color: var(--yellow-shade);
+  .services__content {
+    .heading {
+      display: flex;
+      gap: 0.2rem;
+      align-items: baseline;
+      margin-bottom: 2.6rem;
+
+      h2 {
+        font-size: 4rem;
+        color: var(--primary);
+      }
+
+      .dot {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: var(--body-copy);
       }
     }
 
@@ -115,16 +142,21 @@ const StyledServices = styled.section`
 
   .services__image {
     flex-basis: 40%;
-    overflow: hidden;
+    min-height: 300px;
+    position: relative;
 
-    @media only screen and (max-width: 1300px) {
-      display: none;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
+    video {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      max-width: 100%;
+      min-width: 100%;
+      max-height: 100%;
+      min-height: 100%;
       object-fit: cover;
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
     }
   }
 `;

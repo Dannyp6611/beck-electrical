@@ -4,38 +4,62 @@ import { BsFillInfoCircleFill } from 'react-icons/bs';
 import styled from 'styled-components';
 import logo from '../assets/logo.png';
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
 
 const MobileNav = ({ setMobileNav, mobileNav }) => {
   return (
     <>
-      <StyledOverlay />
+      <StyledOverlay onClick={() => setMobileNav(false)} />
       <StyledMobileNav
         initial={{ x: 100 }}
         animate={{ x: 0 }}
         transition={{ type: 'spring', stiffness: 100 }}
       >
         <div className="nav-header">
-          <img src={logo} alt="" />
+          <img src={logo} alt="" onClick={() => setMobileNav(false)} />
           <button onClick={() => setMobileNav(false)}>
             <AiOutlineClose size={30} />
           </button>
         </div>
         <ul className="mobile__nav--links">
-          <li>
-            <AiFillHome className="icon" />
-            home
+          <li onClick={() => setMobileNav(false)}>
+            <Link
+              onClick={() => setMobileNav(false)}
+              to="about"
+              spy={true}
+              smooth={true}
+              offset={-40}
+              duration={500}
+            >
+              <BsFillInfoCircleFill className="icon" />
+              about
+            </Link>
           </li>
-          <li>
-            <BsFillInfoCircleFill className="icon" />
-            about
+          <li onClick={() => setMobileNav(false)}>
+            <Link
+              onClick={() => setMobileNav(false)}
+              to="services"
+              spy={true}
+              smooth={true}
+              offset={-40}
+              duration={500}
+            >
+              <MdElectricalServices className="icon" />
+              services
+            </Link>
           </li>
-          <li>
-            <MdElectricalServices className="icon" />
-            services
-          </li>
-          <li>
-            <AiFillMail className="icon" />
-            contact
+          <li onClick={() => setMobileNav(false)}>
+            <Link
+              onClick={() => setMobileNav(false)}
+              to="contact"
+              spy={true}
+              smooth={true}
+              offset={-40}
+              duration={500}
+            >
+              <AiFillMail className="icon" />
+              contact
+            </Link>
           </li>
         </ul>
       </StyledMobileNav>
@@ -78,13 +102,14 @@ const StyledMobileNav = styled(motion.nav)`
 
     img {
       width: 14rem;
+      cursor: pointer;
     }
   }
 
   ul {
     list-style: none;
 
-    li {
+    li a {
       padding: 3rem;
       font-size: 3rem;
       display: flex;

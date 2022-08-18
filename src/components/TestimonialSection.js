@@ -3,7 +3,13 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { AiFillStar } from 'react-icons/ai';
 
+import { motion } from 'framer-motion';
+import { fade } from '../animation';
+import { useScroll } from './useScroll';
+
 const Testimonial = () => {
+  const [element, controls] = useScroll();
+
   const [testimonials, setTestimonials] = useState(TestimonialData);
   const [currentTestimonial, setCurrentTestimonial] = useState(testimonials[0]);
 
@@ -15,9 +21,17 @@ const Testimonial = () => {
   };
 
   return (
-    <StyledTestimonialSection>
+    <StyledTestimonialSection
+      ref={element}
+      animate={controls}
+      initial="hidden"
+      variants={fade}
+    >
       <div className="container">
-        <h2>Testimonials</h2>
+        <div className="heading">
+          <h2>Testimonials</h2>
+          <span className="dot"></span>
+        </div>
         <TestimonialsContainer>
           <UsersList>
             {testimonials.map((testimonial) => (
@@ -55,11 +69,6 @@ const Testimonial = () => {
 const StyledCurrentTestimonial = styled.div`
   flex: 1;
 
-  @media only screen and (max-width: 768px) {
-    min-height: 25rem;
-    max-height: 25rem;
-  }
-
   h3 {
     margin-bottom: 1.2rem;
     font-size: 2.6rem;
@@ -77,20 +86,29 @@ const StyledCurrentTestimonial = styled.div`
   }
 `;
 
-const StyledTestimonialSection = styled.section`
+const StyledTestimonialSection = styled(motion.section)`
   padding: 4.6rem 0;
-
-  h2 {
+  .heading {
+    display: flex;
+    align-items: baseline;
     margin-bottom: 6.2rem;
-    font-size: 3.6rem;
-    color: var(--primary);
+    gap: 0.2rem;
 
-    &::after {
-      content: '';
-      width: 30rem;
-      height: 3px;
-      display: block;
-      background-color: var(--primary);
+    @media only screen and (max-width: 768px) {
+      justify-content: center;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 4rem;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: var(--body-copy);
     }
   }
 `;

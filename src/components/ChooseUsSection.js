@@ -1,10 +1,21 @@
 import styled from 'styled-components';
 import { BsCheck2Circle } from 'react-icons/bs';
 import ConsumerUnitImage from '../assets/consumer_unit.jpg';
+import { motion } from 'framer-motion';
+import { fade } from '../animation';
+import { useScroll } from './useScroll';
 
 const ChooseUsSection = () => {
+  const [element, controls] = useScroll();
+
   return (
-    <StyledChooseSection className="container">
+    <StyledChooseSection
+      ref={element}
+      animate={controls}
+      initial="hidden"
+      variants={fade}
+      className="container"
+    >
       <div className="choose-img">
         <img src={ConsumerUnitImage} alt="" />
       </div>
@@ -43,16 +54,18 @@ const ChooseUsSection = () => {
   );
 };
 
-const StyledChooseSection = styled.section`
+const StyledChooseSection = styled(motion.section)`
   display: flex;
-  flex-wrap: wrap;
   gap: 3rem;
   padding-top: 4.2rem;
   padding-bottom: 4.2rem;
 
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
   .choose-img {
     flex: 1;
-    min-width: 50rem;
 
     img {
       width: 100%;

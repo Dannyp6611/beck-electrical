@@ -2,32 +2,83 @@ import styled from 'styled-components';
 import logo from '../assets/logo.png';
 import { FaBars } from 'react-icons/fa';
 import { AiFillPhone, AiFillMail } from 'react-icons/ai';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MobileNav from './MobileNav';
+import { Link } from 'react-scroll';
 
 const Navbar = () => {
   const [mobileNav, setMobileNav] = useState(false);
+
+  useEffect(() => {
+    if (mobileNav) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [mobileNav]);
 
   return (
     <>
       <StyledNav>
         <div className="container">
-          <img className="logo" src={logo} alt="steve beck electrical logo" />
+          <Link to="hero" spy={true} smooth={true} offset={50} duration={500}>
+            <img className="logo" src={logo} alt="steve beck electrical logo" />
+          </Link>
           <ul className="nav__links">
             <li>
-              <a href="/">Home</a>
+              <Link
+                to="hero"
+                spy={true}
+                smooth={true}
+                offset={50}
+                duration={500}
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <a href="/">About</a>
+              <Link
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={-30}
+                duration={500}
+              >
+                About
+              </Link>
             </li>
             <li>
-              <a href="/">Latest Projects</a>
+              <Link
+                to="gallery"
+                spy={true}
+                smooth={true}
+                offset={-30}
+                duration={500}
+              >
+                Our Work
+              </Link>
             </li>
             <li>
-              <a href="/">Services</a>
+              <Link
+                to="services"
+                spy={true}
+                smooth={true}
+                offset={-45}
+                duration={500}
+              >
+                Services
+              </Link>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <Link
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={-60}
+                duration={500}
+              >
+                Contact
+              </Link>
             </li>
           </ul>
           <ul className="contact__information">
@@ -51,6 +102,11 @@ const Navbar = () => {
 };
 
 const StyledNav = styled.nav`
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: var(--primary);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
@@ -68,13 +124,40 @@ const StyledNav = styled.nav`
   .nav__links {
     display: flex;
     list-style: none;
+    gap: 1rem;
 
     li {
       cursor: pointer;
-      padding: 2.4rem;
+      position: relative;
+      overflow: hidden;
+      padding: 0.5rem 1rem;
 
-      &:hover {
-        background-color: var(--yellow-shade);
+      &::after,
+      &::before {
+        content: '';
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        display: block;
+        position: absolute;
+        transition: transform 0.2s ease;
+        transform-origin: middle;
+        transform: translateX(110%);
+      }
+
+      &::before {
+        top: 0;
+        left: 0;
+      }
+
+      &::after {
+        bottom: 0;
+        left: 0;
+      }
+
+      &:hover::before,
+      &:hover::after {
+        transform: translate(0);
       }
     }
 
@@ -82,6 +165,10 @@ const StyledNav = styled.nav`
       font-size: 2rem;
       text-decoration: none;
       color: currentColor;
+
+      @media only screen and (max-width: 1200px) {
+        font-size: 1.6rem;
+      }
     }
 
     @media only screen and (max-width: 885px) {
@@ -97,6 +184,10 @@ const StyledNav = styled.nav`
       display: flex;
       align-items: center;
       gap: 0.5rem;
+
+      @media only screen and (max-width: 1200px) {
+        font-size: 1.4rem;
+      }
     }
 
     @media only screen and (max-width: 885px) {

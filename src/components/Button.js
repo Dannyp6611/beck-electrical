@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-const Button = ({ isSecondary, children }) => {
+const Button = ({ isSecondary, children, ...props }) => {
   return (
-    <StyledButton className={isSecondary && 'secondary'}>
+    <StyledButton className={isSecondary && 'secondary'} {...props}>
       {children}
     </StyledButton>
   );
 };
 
-const StyledButton = styled.button`
+const StyledButton = styled.a`
   cursor: pointer;
   display: inline-block;
   text-transform: capitalize;
@@ -18,6 +18,7 @@ const StyledButton = styled.button`
   outline: none;
   background: var(--primary);
   padding: 12px 18px;
+  border-radius: 16px;
   color: var(--body-copy);
   border: 1px solid transparent;
   font-size: 2rem;

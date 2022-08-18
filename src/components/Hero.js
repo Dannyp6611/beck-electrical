@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+// icons
 import { BsArrowUpRight } from 'react-icons/bs';
+// framer motion
+import { motion } from 'framer-motion';
+import { titleAnim, fade, pageAnimation } from '../animation';
 
-const images = ['hero1', 'hero2', 'hero3', 'hero4'];
+const images = ['hero1', 'hero2', 'hero3'];
 
 const Hero = () => {
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
@@ -30,7 +34,12 @@ const Hero = () => {
   }, [currentImageIdx]);
 
   return (
-    <StyledHero>
+    <StyledHero
+      id="hero"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+    >
       <div className="hero__img">
         <picture>
           <source
@@ -46,31 +55,31 @@ const Hero = () => {
 
         <div className="overlay"></div>
         <div className="hero-content-box">
-          <h1>
-            Beck Electrical Residential & Commercial Services
-            <span className="dot"></span>
-          </h1>
-          <p>
+          <motion.h1 variants={titleAnim}>
+            Beck Electrical Residential & <br /> Commercial Services
+          </motion.h1>
+
+          <motion.p variants={titleAnim}>
             Beck Electrical Services is based in Preston and was established in
             2011. We cover the North West area.
-          </p>
-          <div className="buttons-container">
-            <Button>
+          </motion.p>
+          <motion.div variants={fade} className="buttons-container">
+            <Button href="#contact">
               <span>contact now</span>
               <BsArrowUpRight />
             </Button>
-            <Button isSecondary={true}>
+            <Button href="#gallery" isSecondary={true}>
               <span>see work</span>
               <BsArrowUpRight />
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </StyledHero>
   );
 };
 
-const StyledHero = styled.section`
+const StyledHero = styled(motion.section)`
   .hero__img {
     position: relative;
     height: 70vh;
@@ -90,18 +99,11 @@ const StyledHero = styled.section`
         margin-bottom: 1.6rem;
         position: relative;
 
-        span.dot {
-          display: inline-block;
-          width: 1rem;
-          height: 1rem;
-          border-radius: 50%;
-          background-color: var(--primary);
-        }
-
         @media only screen and (max-width: 768px) {
           font-size: 3.2rem;
         }
       }
+
       p {
         font-weight: 500;
         font-size: 2rem;
@@ -119,7 +121,7 @@ const StyledHero = styled.section`
     }
 
     @media only screen and (max-width: 768px) {
-      height: 60vh;
+      height: 65vh;
     }
 
     .overlay {
