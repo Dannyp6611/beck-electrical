@@ -78,7 +78,7 @@ const ContactForm = () => {
       name="contact v1"
       method="POST"
       data-netlify="true"
-      onSubmit={handleSubmit}
+      onSubmit="submit"
     >
       <input type="hidden" name="form-name" value="contact v1" />
       <FormControl className={`${nameInputHasError ? 'error' : ''}`}>
