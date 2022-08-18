@@ -83,10 +83,16 @@ const Navbar = () => {
           </ul>
           <ul className="contact__information">
             <li>
-              <AiFillPhone size={20} /> 07729 880872
+              <a href="tel:07729880872">
+                <AiFillPhone size={20} />
+                07729880872
+              </a>
             </li>
             <li>
-              <AiFillMail size={20} /> info@beckelectricalservices.co.uk
+              <a href="mailto:info@beckelectricalservices.co.uk">
+                <AiFillMail size={20} />
+                info@beckelectricalservices.co.uk
+              </a>
             </li>
           </ul>
           <button onClick={() => setMobileNav(true)}>
@@ -184,6 +190,13 @@ const StyledNav = styled.nav`
       display: flex;
       align-items: center;
       gap: 0.5rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        color: currentColor;
+        gap: 0.2rem;
+      }
 
       @media only screen and (max-width: 1200px) {
         font-size: 1.4rem;
