@@ -75,12 +75,11 @@ const ContactForm = () => {
 
   return (
     <StyledContactForm
-      name="contact v1"
+      name="contact v2"
       method="POST"
       data-netlify="true"
       onSubmit="submit"
     >
-      <input type="hidden" name="form-name" value="contact v1" />
       <FormControl className={`${nameInputHasError ? 'error' : ''}`}>
         <label htmlFor="name">Name</label>
         <input
