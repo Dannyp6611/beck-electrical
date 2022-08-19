@@ -25,10 +25,10 @@ const FooterSection = () => {
         <div className="footer-grid">
           <ul className="contact-links">
             <li>
-              <a href="tel:07534182671">
+              <a href="tel:07729880872">
                 <AiFillPhone size={20} />
                 <strong>Phone: </strong>
-                <span>07534182671</span>
+                <span>07729880872</span>
               </a>
             </li>
             <li>
@@ -102,7 +102,10 @@ const FooterSection = () => {
               </a>
             </li>
             <li>
-              <a>
+              <a
+                href="https://www.instagram.com/beckelectricalservices/"
+                target="_blank"
+              >
                 <FaInstagram />
               </a>
             </li>

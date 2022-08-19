@@ -30,7 +30,6 @@ const Testimonial = () => {
       <div className="container">
         <div className="heading">
           <h2>Testimonials</h2>
-          <span className="dot"></span>
         </div>
         <TestimonialsContainer>
           <UsersList>

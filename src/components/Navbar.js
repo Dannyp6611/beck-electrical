@@ -96,7 +96,7 @@ const Navbar = () => {
             </li>
           </ul>
           <button onClick={() => setMobileNav(true)}>
-            <FaBars size={30} />
+            <FaBars className="hamburger-icon" size={30} />
           </button>
         </div>
       </StyledNav>
@@ -116,6 +116,14 @@ const StyledNav = styled.nav`
   background-color: var(--primary);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
+  button {
+    color: #000;
+
+    .hamburger-icon {
+      color: #000;
+    }
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -123,7 +131,7 @@ const StyledNav = styled.nav`
   }
 
   .logo {
-    width: 16rem;
+    width: 14rem;
     height: auto;
   }
   /* nav links */

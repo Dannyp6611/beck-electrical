@@ -150,6 +150,7 @@ const StyledContactForm = styled.form`
 
   @media only screen and (max-width: 610px) {
     grid-template-columns: 1fr;
+    padding: 3rem;
   }
 
   button {
@@ -173,6 +174,7 @@ const FormControl = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  flex: 1;
 
   &.error {
     label {
@@ -197,6 +199,11 @@ const FormControl = styled.div`
     outline: none;
     border: 1px solid #eee;
     color: #808080;
+
+    @media only screen and (max-width: 610px) {
+      font-size: 1.6rem;
+      padding: 0.7rem;
+    }
 
     &::placeholder {
       color: #808080;

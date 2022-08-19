@@ -23,7 +23,6 @@ const ContactUsSection = () => {
         <div className="contact__inner">
           <div className="heading">
             <h2>Get in touch</h2>
-            <span className="dot"></span>
           </div>
           <p>
             Got an electrical problem and require our services? Please don't

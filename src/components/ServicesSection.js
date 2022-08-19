@@ -22,7 +22,6 @@ const ServicesSection = () => {
       <div className="services__content">
         <div className="heading">
           <h2>Services</h2>
-          <span className="dot"></span>
         </div>
         <ul>
           <li>
@@ -61,7 +60,7 @@ const ServicesSection = () => {
       </div>
       {/* services image */}
       <div className="services__image">
-        <video autoPlay loop muted>
+        <video autoPlay loop muted playsInline>
           <source src={lightsVideo} type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
         </video>

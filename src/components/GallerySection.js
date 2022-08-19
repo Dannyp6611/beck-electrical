@@ -33,7 +33,6 @@ const GallerySection = () => {
         <div className="container">
           <div className="heading">
             <h2>Our Work</h2>
-            <span className="dot"></span>
           </div>
           <GalleryGrid>
             {images.map((image, idx) => (
@@ -81,12 +80,15 @@ const StyledGallerySection = styled.section`
 `;
 
 const GalleryGrid = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 3.5rem;
+  gap: 3.5rem; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 
   .gallery-img {
-    width: 100%;
+    flex: 1 0 30%;
     cursor: pointer;
     transition: all 0.2s ease;
 

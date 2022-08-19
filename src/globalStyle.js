@@ -28,7 +28,7 @@ html {
 
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1100px) {
   html {
     font-size: 58%;
   }
@@ -37,6 +37,12 @@ html {
 @media only screen and (max-width: 600px) {
   html {
     font-size: 55%;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  html {
+    font-size: 45%;
   }
 }
 
