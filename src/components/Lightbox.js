@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+import ReactDOM from 'react-dom';
+import { useEffect } from 'react';
+
 const Lightbox = ({ img, setSelectedImage }) => {
   const disableLightbox = (e) => {
     if (e.target.classList.contains('lightbox__img')) {
@@ -9,7 +12,15 @@ const Lightbox = ({ img, setSelectedImage }) => {
     setSelectedImage(null);
   };
 
-  return (
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
+  return ReactDOM.createPortal(
     <StyledBackdrop onClick={disableLightbox}>
       <motion.img
         initial={{ opacity: 0 }}
@@ -19,7 +30,8 @@ const Lightbox = ({ img, setSelectedImage }) => {
         src={img}
         alt="lightbox image"
       />
-    </StyledBackdrop>
+    </StyledBackdrop>,
+    document.body
   );
 };
 
@@ -29,13 +41,15 @@ const StyledBackdrop = styled(motion.div)`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   cursor: pointer;
+  z-index: 20;
 
   img {
     position: absolute;
     border-radius: 8px;
     width: 60rem;
+    max-height: 50vh;
     object-fit: cover;
     top: 50%;
     left: 50%;

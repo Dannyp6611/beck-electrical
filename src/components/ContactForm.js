@@ -1,139 +1,83 @@
 import styled from 'styled-components';
 import useInput from '../hooks/useInput';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
-  const {
-    value: enteredName,
-    isValid: enteredNameIsValid,
-    hasError: nameInputHasError,
-    valueChangeHandler: nameChangedHandler,
-    inputBlurHandler: nameBlurHandler,
-    reset: resetNameInput,
-  } = useInput((value) => value.trim() !== '');
+  const form = useRef();
 
-  const {
-    value: enteredEmail,
-    isValid: enteredEmailIsValid,
-    hasError: emailInputHasError,
-    valueChangeHandler: emailChangedHandler,
-    inputBlurHandler: emailBlurHandler,
-    reset: resetEmailInput,
-  } = useInput((value) => value.includes('@'));
-
-  const {
-    value: enteredPhone,
-    isValid: enteredPhoneIsValid,
-    hasError: phoneInputHasError,
-    valueChangeHandler: phoneChangedHandler,
-    inputBlurHandler: phoneBlurHandler,
-    reset: resetPhoneInput,
-  } = useInput((value) =>
-    /^((\(?0\d{4}\)?\s?\d{3}\s?\d{3})|(\(?0\d{3}\)?\s?\d{3}\s?\d{4})|(\(?0\d{2}\)?\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/.test(
-      value
-    )
-  );
-
-  const {
-    value: enteredMessage,
-    isValid: enteredMessageIsValid,
-    hasError: messageInputHasError,
-    valueChangeHandler: messageChangedHandler,
-    inputBlurHandler: messageBlurHandler,
-    reset: resetMessageInput,
-  } = useInput((value) => value.trim() !== '');
-
-  let formIsValid = false;
-
-  if (
-    enteredNameIsValid &&
-    enteredEmailIsValid &&
-    enteredPhoneIsValid &&
-    enteredMessageIsValid
-  ) {
-    formIsValid = true;
-  }
+  const sendEmail = (e) => {
+    e.preventDefault();
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      !enteredEmailIsValid ||
-      !enteredNameIsValid ||
-      !enteredPhoneIsValid ||
-      !enteredMessageIsValid
-    ) {
-      return;
-    }
-
     // handle form submission here
-
-    resetNameInput();
-    resetEmailInput();
-    resetPhoneInput();
-    resetMessageInput();
+    emailjs
+      .sendForm(
+        'service_loyctdf',
+        'template_2pqum2b',
+        form.current,
+        'tsCqOVQy0HDm2wElI'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log('message sent');
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   return (
-    <StyledContactForm
-      name="contact v2"
-      method="POST"
-      data-netlify="true"
-      onSubmit="handleSubmit"
-    >
-      <FormControl className={`${nameInputHasError ? 'error' : ''}`}>
+    <StyledContactForm ref={form} onSubmit={handleSubmit}>
+      <FormControl>
         <label htmlFor="name">Name</label>
         <input
-          onChange={nameChangedHandler}
-          onBlur={nameBlurHandler}
-          value={enteredName}
           type="text"
-          name="name"
+          id="name"
+          name="from_name"
           placeholder="John Smith"
+          required
         />
       </FormControl>
 
-      <FormControl className={`${phoneInputHasError ? 'error' : ''}`}>
+      {/* <FormControl className={`${phoneInputHasError ? 'error' : ''}`}>
         <label htmlFor="phone">Phone</label>
         <input
           value={enteredPhone}
           onChange={phoneChangedHandler}
           onBlur={phoneBlurHandler}
           type="text"
-          name="phone"
+          id="phone"
           placeholder="07729 880872"
         />
-      </FormControl>
+      </FormControl> */}
 
-      <FormControl
-        className={`email-container ${emailInputHasError ? 'error' : ''}`}
-      >
+      <FormControl className={`email-container`}>
         <label htmlFor="email">Email address</label>
         <input
-          onChange={emailChangedHandler}
-          onBlur={emailBlurHandler}
-          value={enteredEmail}
           type="email"
-          name="email"
+          id="email"
+          name="reply_to"
           placeholder="name@email.com"
+          required
         />
       </FormControl>
 
-      <FormControl
-        className={`message-container ${messageInputHasError ? 'error' : ''} `}
-      >
+      <FormControl className={`message-container`}>
         <label htmlFor="message">How can we assist you?</label>
         <textarea
-          value={enteredMessage}
-          onChange={messageChangedHandler}
-          onBlur={messageBlurHandler}
           name="message"
-          placeholder="Type your message here"
+          placeholder="Type your message here, please leave a contact number."
+          required
         ></textarea>
       </FormControl>
 
-      <button type="submit" disabled={!formIsValid}>
-        Submit Message
-      </button>
+      <button type="submit">Submit Message</button>
     </StyledContactForm>
   );
 };
@@ -144,8 +88,8 @@ const StyledContactForm = styled.form`
   padding: 5rem;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
 
   @media only screen and (max-width: 610px) {
@@ -154,7 +98,6 @@ const StyledContactForm = styled.form`
   }
 
   button {
-    grid-column: 1 / -1;
     padding: 1.6rem;
     border-radius: 22px;
     background-color: var(--primary);
@@ -186,13 +129,10 @@ const FormControl = styled.div`
     }
   }
 
-  &.email-container,
-  &.message-container {
-    grid-column: 1 / -1;
-  }
-
   input,
   textarea {
+    display: block;
+    width: 100%;
     padding: 1rem;
     font-size: 2rem;
     border-radius: 6px;

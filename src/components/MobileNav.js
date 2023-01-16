@@ -1,4 +1,9 @@
-import { AiOutlineClose, AiFillHome, AiFillMail } from 'react-icons/ai';
+import {
+  AiOutlineClose,
+  AiFillHome,
+  AiFillMail,
+  AiFillPhone,
+} from 'react-icons/ai';
 import { MdElectricalServices } from 'react-icons/md';
 import { BsFillInfoCircleFill } from 'react-icons/bs';
 import styled from 'styled-components';
@@ -17,7 +22,10 @@ const MobileNav = ({ setMobileNav, mobileNav }) => {
       >
         <div className="nav-header">
           <img src={logo} alt="" onClick={() => setMobileNav(false)} />
-          <button onClick={() => setMobileNav(false)}>
+          <button
+            onClick={() => setMobileNav(false)}
+            role="mobile hamburger button"
+          >
             <AiOutlineClose size={30} />
           </button>
         </div>
@@ -32,20 +40,33 @@ const MobileNav = ({ setMobileNav, mobileNav }) => {
               duration={500}
             >
               <BsFillInfoCircleFill className="icon" />
-              about
+              About
             </Link>
           </li>
           <li onClick={() => setMobileNav(false)}>
             <Link
               onClick={() => setMobileNav(false)}
-              to="services"
+              to="gallery"
               spy={true}
               smooth={true}
               offset={-40}
               duration={500}
             >
               <MdElectricalServices className="icon" />
-              services
+              Our Work
+            </Link>
+          </li>
+          <li onClick={() => setMobileNav(false)}>
+            <Link
+              onClick={() => setMobileNav(false)}
+              to="testimonials"
+              spy={true}
+              smooth={true}
+              offset={-40}
+              duration={500}
+            >
+              <AiFillMail className="icon" />
+              Testimonials
             </Link>
           </li>
           <li onClick={() => setMobileNav(false)}>
@@ -58,8 +79,23 @@ const MobileNav = ({ setMobileNav, mobileNav }) => {
               duration={500}
             >
               <AiFillMail className="icon" />
-              contact
+              Contact
             </Link>
+          </li>
+        </ul>
+
+        <ul className="contact__information">
+          <li>
+            <a href="tel:07729880872">
+              <AiFillPhone className="icon" size={30} />
+              07729880872
+            </a>
+          </li>
+          <li>
+            <a href="mailto:info@beckelectricalservices.co.uk">
+              <AiFillMail className="icon" size={30} />
+              info@beckelectricalservices.co.uk
+            </a>
           </li>
         </ul>
       </StyledMobileNav>
@@ -69,7 +105,7 @@ const MobileNav = ({ setMobileNav, mobileNav }) => {
 
 const StyledOverlay = styled.div`
   position: fixed;
-  z-index: 5;
+  z-index: 18;
   top: 0;
   left: 0;
   right: 0;
@@ -79,6 +115,8 @@ const StyledOverlay = styled.div`
 
 const StyledMobileNav = styled(motion.nav)`
   background: whitesmoke;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   right: 0;
@@ -86,6 +124,7 @@ const StyledMobileNav = styled(motion.nav)`
   width: 80vw;
   max-width: 40rem;
   z-index: 20;
+  padding-bottom: 3.2rem;
 
   .nav-header {
     display: flex;
@@ -106,7 +145,7 @@ const StyledMobileNav = styled(motion.nav)`
     }
   }
 
-  ul {
+  .mobile__nav--links {
     list-style: none;
 
     li a {
@@ -124,6 +163,21 @@ const StyledMobileNav = styled(motion.nav)`
         background-color: #fff;
         cursor: pointer;
       }
+    }
+  }
+
+  .contact__information {
+    margin-top: auto;
+    padding: 1.6rem;
+    list-style-type: none;
+
+    li a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
   }
 `;

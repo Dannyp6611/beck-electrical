@@ -10,6 +10,7 @@ import galleryImage6 from '../assets/gallery6.jpg';
 import galleryImage7 from '../assets/gallery7.jpg';
 import galleryImage8 from '../assets/gallery8.jpg';
 import galleryImage9 from '../assets/gallery9.jpg';
+import { useEffect } from 'react';
 
 const images = [
   galleryImage1,
@@ -26,6 +27,15 @@ const images = [
 const GallerySection = () => {
   const [showLightbox, setShowLightBox] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
@@ -47,7 +57,7 @@ const GallerySection = () => {
           </GalleryGrid>
         </div>
       </StyledGallerySection>
-      {selectedImage && (
+      {selectedImage && windowWidth >= 1289 && (
         <Lightbox setSelectedImage={setSelectedImage} img={selectedImage} />
       )}
     </>
@@ -65,35 +75,37 @@ const StyledGallerySection = styled.section`
     margin-bottom: 2.6rem;
 
     h2 {
-      font-size: 4rem;
+      font-size: 3rem;
       color: var(--body-copy);
-    }
-
-    .dot {
-      display: inline-block;
-      width: 1rem;
-      height: 1rem;
-      border-radius: 50%;
-      background-color: var(--primary);
     }
   }
 `;
 
 const GalleryGrid = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 3.5rem; */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  /* display: flex;
+  flex-wrap: wrap; */
+
+  @media only screen and (min-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   .gallery-img {
-    flex: 1 0 30%;
-    cursor: pointer;
     transition: all 0.2s ease;
+    height: 25rem;
 
-    &:hover {
-      transform: scale(1.05);
+    @media only screen and (min-width: 1289px) {
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     img {

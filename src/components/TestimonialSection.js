@@ -26,6 +26,7 @@ const Testimonial = () => {
       animate={controls}
       initial="hidden"
       variants={fade}
+      id="testimonials"
     >
       <div className="container">
         <div className="heading">
@@ -46,7 +47,7 @@ const Testimonial = () => {
                   src={testimonial.imageUrl}
                   alt=""
                 />
-                <h4>{testimonial.user}</h4>
+                <h3>{testimonial.user}</h3>
               </div>
             ))}
           </UsersList>

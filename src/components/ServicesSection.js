@@ -19,45 +19,51 @@ const ServicesSection = () => {
       initial="hidden"
       id="services"
     >
-      <div className="services__content">
+      {/* <div className="services__content">
         <div className="heading">
           <h2>Services</h2>
         </div>
         <ul>
           <li>
-            <img src={servicesKitchen} alt="" />
-            <h4>Kitchen Electrics</h4>
+            <img
+              src={servicesKitchen}
+              alt="kitchen cupboard spotlights photo"
+            />
+            <h3>Kitchen Electrics</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam ab
               at eum alias enim voluptas! Eius sapiente eveniet aliquid quo.
             </p>
           </li>
           <li>
-            <img src={servicesOutdoor} alt="" />
-            <h4>Outdoor Lighting</h4>
+            <img src={servicesOutdoor} alt="outdoor lights photo" />
+            <h3>Outdoor Lighting</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam ab
               at eum alias enim voluptas! Eius sapiente eveniet aliquid quo.
             </p>
           </li>
           <li>
-            <img src="https://via.placeholder.com/150" alt="" />
-            <h4>Electrical Inspections</h4>
+            <img
+              src="https://via.placeholder.com/150"
+              alt="electrical inspection box photo"
+            />
+            <h3>Electrical Inspections</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam ab
               at eum alias enim voluptas! Eius sapiente eveniet aliquid quo.
             </p>
           </li>
           <li>
-            <img src={servicesBathroom} alt="" />
-            <h4>Bathroom Electrics</h4>
+            <img src={servicesBathroom} alt="bathroom lights photo" />
+            <h3>Bathroom Electrics</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam ab
               at eum alias enim voluptas! Eius sapiente eveniet aliquid quo.
             </p>
           </li>
         </ul>
-      </div>
+      </div> */}
       {/* services image */}
       <div className="services__image">
         <video autoPlay loop muted playsInline>
@@ -130,18 +136,19 @@ const StyledServices = styled(motion.section)`
           height: 25rem;
           border-radius: 16px;
         }
-        h4 {
+        h3 {
           font-size: 2.6rem;
           color: var(--primary);
-          margin-bottom: 1.2rem;
+          margin: 1.2rem 0;
         }
       }
     }
   }
 
   .services__image {
-    flex-basis: 40%;
-    min-height: 300px;
+    /* flex-basis: 40%; */
+    flex: 1;
+    min-height: 400px;
     position: relative;
 
     video {

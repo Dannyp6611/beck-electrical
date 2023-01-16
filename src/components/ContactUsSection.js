@@ -37,21 +37,21 @@ const ContactUsSection = () => {
             <li>
               <a href="tel:07729880872">
                 <BsFillTelephoneForwardFill className="icon" size={30} />
-                <h4>Phone</h4>
+                <h3>Phone</h3>
                 <strong>07729 880872</strong>
               </a>
             </li>
             <li>
               <a href="mailto:info@beckelectricalservices.co.uk">
                 <GrMail className="icon" size={30} />
-                <h4>Email</h4>
+                <h3>Email</h3>
                 <strong>info@beckelectricalservices.co.uk</strong>
               </a>
               <p></p>
             </li>
             <li>
               <ImLocation2 className="icon" size={30} />
-              <h4>Location</h4>
+              <h3>Location</h3>
               <strong>
                 5 Badgers Croft, <br /> Ribbleton, Preston, PR2 6NW
               </strong>

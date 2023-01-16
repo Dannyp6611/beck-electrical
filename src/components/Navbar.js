@@ -8,6 +8,7 @@ import { Link } from 'react-scroll';
 
 const Navbar = () => {
   const [mobileNav, setMobileNav] = useState(false);
+  const [heightScroll, setHeightScroll] = useState(window.scrollY);
 
   useEffect(() => {
     if (mobileNav) {
@@ -17,9 +18,15 @@ const Navbar = () => {
     }
   }, [mobileNav]);
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setHeightScroll(window.scrollY);
+    });
+  }, []);
+
   return (
     <>
-      <StyledNav>
+      <StyledNav className={heightScroll >= 100 && 'activeNav'}>
         <div className="container">
           <Link to="hero" spy={true} smooth={true} offset={50} duration={500}>
             <img className="logo" src={logo} alt="steve beck electrical logo" />
@@ -60,13 +67,13 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="services"
+                to="testimonials"
                 spy={true}
                 smooth={true}
                 offset={-45}
                 duration={500}
               >
-                Services
+                Testimonials
               </Link>
             </li>
             <li>
@@ -109,12 +116,16 @@ const Navbar = () => {
 
 const StyledNav = styled.nav`
   position: fixed;
-  z-index: 20;
+  z-index: 15;
   top: 0;
   left: 0;
   right: 0;
   background-color: var(--primary);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  &.activeNav {
+    background-color: var(--yellow-shade);
+  }
 
   button {
     color: #000;
@@ -176,9 +187,10 @@ const StyledNav = styled.nav`
     }
 
     a {
-      font-size: 2rem;
+      font-size: inherit;
       text-decoration: none;
       color: currentColor;
+      font-weight: 600;
 
       @media only screen and (max-width: 1200px) {
         font-size: 1.6rem;

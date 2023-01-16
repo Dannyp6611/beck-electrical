@@ -48,7 +48,7 @@ const StyledAboutInner = styled.div`
   margin: 0 auto;
   .heading {
     h2 {
-      font-size: 4rem;
+      font-size: 3rem;
       color: var(--body-copy);
       text-align: center;
       margin-bottom: 1.2rem;

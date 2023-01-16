@@ -26,8 +26,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
-
 @media only screen and (max-width: 1100px) {
   html {
     font-size: 58%;
@@ -47,14 +45,14 @@ html {
 }
 
 body {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   line-height: 1.4;
   font-weight: 400;
   color: var(--body-copy);
 }
 
 .container {
-  max-width: 140rem;
+  max-width: 120rem;
   padding-left: 1.6rem;
   padding-right: 1.6rem;
   margin-left: auto;

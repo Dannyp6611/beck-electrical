@@ -25,28 +25,28 @@ const ChooseUsSection = () => {
         <div className="choose-info">
           <div className="item">
             <BsCheck2Circle size={30} />
-            <h4>
+            <h3>
               Over 10 years experience as an electrical contractor around the
               North West.
-            </h4>
+            </h3>
           </div>
           <div className="item">
             <BsCheck2Circle size={30} />
-            <h4>
+            <h3>
               Efficient and friendly service, always striving to achieve 100%
               customer satisfaction.
-            </h4>
+            </h3>
           </div>
           <div className="item">
             <BsCheck2Circle size={30} />
-            <h4>
+            <h3>
               All our electricians have been trained to the latest British
               Standards
-            </h4>
+            </h3>
           </div>
           <div className="item">
             <BsCheck2Circle size={30} />
-            <h4>We provide services to both domestic and commercial clients</h4>
+            <h3>We provide services to both domestic and commercial clients</h3>
           </div>
         </div>
       </ChooseContent>
@@ -81,7 +81,7 @@ const ChooseContent = styled.div`
   padding: 2rem 0;
 
   h2 {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 1.6rem;
     text-align: center;
   }
@@ -107,7 +107,7 @@ const ChooseContent = styled.div`
       color: var(--body-copy);
       border-radius: 6px;
       padding: 2.4rem;
-      font-size: 2rem;
+      /* font-size: 2rem; */
 
       &:hover {
         background-color: var(--yellow-shade);
