@@ -1,6 +1,6 @@
 // TEST
 import { useInView } from 'react-intersection-observer';
-import { useAnimation, motion } from 'framer-motion';
+import { useAnimation } from 'framer-motion';
 
 export const useScroll = () => {
   const controls = useAnimation();

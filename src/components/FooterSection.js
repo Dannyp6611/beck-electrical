@@ -65,13 +65,13 @@ const FooterSection = () => {
             </li>
             <li>
               <Link
-                to="services"
+                to="testimonials"
                 spy={true}
                 smooth={true}
                 offset={-30}
                 duration={500}
               >
-                Services
+                Testimonials
               </Link>
             </li>
             <li>
@@ -97,6 +97,7 @@ const FooterSection = () => {
               <a
                 href="https://en-gb.facebook.com/beckelectricalservices/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <FaFacebookF />
               </a>
@@ -105,6 +106,7 @@ const FooterSection = () => {
               <a
                 href="https://www.instagram.com/beckelectricalservices/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <FaInstagram />
               </a>
@@ -118,7 +120,11 @@ const FooterSection = () => {
           </small>
           <small>
             Website Designed by{' '}
-            <a href="https://dannyparker.netlify.app/" target="_blank">
+            <a
+              href="https://dannyparker.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
               Danny Parker
             </a>
           </small>

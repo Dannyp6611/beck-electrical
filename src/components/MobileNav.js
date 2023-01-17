@@ -1,11 +1,7 @@
-import {
-  AiOutlineClose,
-  AiFillHome,
-  AiFillMail,
-  AiFillPhone,
-} from 'react-icons/ai';
+import { AiOutlineClose, AiFillMail, AiFillPhone } from 'react-icons/ai';
 import { MdElectricalServices } from 'react-icons/md';
 import { BsFillInfoCircleFill } from 'react-icons/bs';
+import { FaUserCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 import logo from '../assets/logo.png';
 import { motion } from 'framer-motion';
@@ -19,13 +15,14 @@ const MobileNav = ({ setMobileNav, mobileNav }) => {
         initial={{ x: 100 }}
         animate={{ x: 0 }}
         transition={{ type: 'spring', stiffness: 100 }}
+        role="navigation"
+        aria-label="Main menu"
       >
         <div className="nav-header">
-          <img src={logo} alt="" onClick={() => setMobileNav(false)} />
-          <button
-            onClick={() => setMobileNav(false)}
-            role="mobile hamburger button"
-          >
+          <Link to="hero">
+            <img src={logo} alt="" onClick={() => setMobileNav(false)} />
+          </Link>
+          <button onClick={() => setMobileNav(false)} aria-controls="main-menu">
             <AiOutlineClose size={30} />
           </button>
         </div>
@@ -65,7 +62,7 @@ const MobileNav = ({ setMobileNav, mobileNav }) => {
               offset={-40}
               duration={500}
             >
-              <AiFillMail className="icon" />
+              <FaUserCircle className="icon" />
               Testimonials
             </Link>
           </li>
@@ -87,14 +84,14 @@ const MobileNav = ({ setMobileNav, mobileNav }) => {
         <ul className="contact__information">
           <li>
             <a href="tel:07729880872">
-              <AiFillPhone className="icon" size={30} />
-              07729880872
+              <AiFillPhone size={20} />
+              <strong>07729880872</strong>
             </a>
           </li>
           <li>
             <a href="mailto:info@beckelectricalservices.co.uk">
-              <AiFillMail className="icon" size={30} />
-              info@beckelectricalservices.co.uk
+              <AiFillMail size={20} />
+              <strong>info@beckelectricalservices.co.uk</strong>
             </a>
           </li>
         </ul>
@@ -168,16 +165,27 @@ const StyledMobileNav = styled(motion.nav)`
 
   .contact__information {
     margin-top: auto;
-    padding: 1.6rem;
     list-style-type: none;
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 10px;
 
     li a {
       color: inherit;
       text-decoration: none;
-      font-size: 2rem;
+      font-size: 3rem;
       display: flex;
       align-items: center;
       gap: 10px;
+
+      @media only screen and (max-width: 960px) {
+        font-size: 2rem;
+      }
+
+      @media only screen and (max-width: 376px) {
+        font-size: 1.6rem;
+      }
     }
   }
 `;

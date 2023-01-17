@@ -1,14 +1,12 @@
 import styled from 'styled-components';
-import useInput from '../hooks/useInput';
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ContactForm = () => {
   const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,66 +17,72 @@ const ContactForm = () => {
         'service_loyctdf',
         'template_2pqum2b',
         form.current,
-        'tsCqOVQy0HDm2wElI'
+        process.env.REACT_APP_PUBLIC_KEY
       )
       .then(
         (result) => {
-          console.log(result.text);
-          console.log('message sent');
+          toast.success('Message sent', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
         },
         (error) => {
-          console.log(error.text);
+          toast.error('Error sending message', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
         }
       );
   };
 
   return (
-    <StyledContactForm ref={form} onSubmit={handleSubmit}>
-      <FormControl>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="from_name"
-          placeholder="John Smith"
-          required
-        />
-      </FormControl>
-
-      {/* <FormControl className={`${phoneInputHasError ? 'error' : ''}`}>
-        <label htmlFor="phone">Phone</label>
-        <input
-          value={enteredPhone}
-          onChange={phoneChangedHandler}
-          onBlur={phoneBlurHandler}
-          type="text"
-          id="phone"
-          placeholder="07729 880872"
-        />
-      </FormControl> */}
-
-      <FormControl className={`email-container`}>
-        <label htmlFor="email">Email address</label>
-        <input
-          type="email"
-          id="email"
-          name="reply_to"
-          placeholder="name@email.com"
-          required
-        />
-      </FormControl>
-
-      <FormControl className={`message-container`}>
-        <label htmlFor="message">How can we assist you?</label>
-        <textarea
-          name="message"
-          placeholder="Type your message here, please leave a contact number."
-          required
-        ></textarea>
-      </FormControl>
-
-      <button type="submit">Submit Message</button>
-    </StyledContactForm>
+    <>
+      <StyledContactForm ref={form} onSubmit={handleSubmit}>
+        <FormControl>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="from_name"
+            placeholder="John Smith"
+            required
+          />
+        </FormControl>
+        <FormControl className={`email-container`}>
+          <label htmlFor="email">Email address</label>
+          <input
+            type="email"
+            id="email"
+            name="reply_to"
+            placeholder="name@email.com"
+            required
+          />
+        </FormControl>
+        <FormControl className={`message-container`}>
+          <label htmlFor="message">How can we assist you?</label>
+          <textarea
+            name="message"
+            placeholder="Type your message here, please leave a contact number."
+            required
+          ></textarea>
+        </FormControl>
+        <button type="submit">Submit Message</button>
+      </StyledContactForm>
+      {/* <button onClick={notify}>Test</button> */}
+      <ToastContainer />
+    </>
   );
 };
 

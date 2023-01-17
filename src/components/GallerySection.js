@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import Lightbox from './Lightbox';
-import galleryImage1 from '../assets/gallery1.jpg';
-import galleryImage2 from '../assets/gallery2.jpg';
-import galleryImage3 from '../assets/gallery3.jpg';
-import galleryImage4 from '../assets/gallery4.jpg';
+import galleryImage1 from '../assets/gallery1.webp';
+import galleryImage2 from '../assets/gallery2.webp';
+import galleryImage3 from '../assets/gallery3.webp';
+import galleryImage4 from '../assets/gallery4.webp';
 import galleryImage5 from '../assets/gallery5.webp';
-import galleryImage6 from '../assets/gallery6.jpg';
-import galleryImage7 from '../assets/gallery7.jpg';
-import galleryImage8 from '../assets/gallery8.jpg';
-import galleryImage9 from '../assets/gallery9.jpg';
+import galleryImage6 from '../assets/gallery6.webp';
+import galleryImage7 from '../assets/gallery7.webp';
+import galleryImage8 from '../assets/gallery8.webp';
+import galleryImage9 from '../assets/gallery9.webp';
 import { useEffect } from 'react';
 
 const images = [
@@ -25,7 +25,6 @@ const images = [
 ];
 
 const GallerySection = () => {
-  const [showLightbox, setShowLightBox] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -51,13 +50,13 @@ const GallerySection = () => {
                 key={idx}
                 onClick={() => setSelectedImage(image)}
               >
-                <img src={image} alt={`gallery image ${idx + 1}`} />
+                <img src={image} alt="completed work" />
               </div>
             ))}
           </GalleryGrid>
         </div>
       </StyledGallerySection>
-      {selectedImage && windowWidth >= 1289 && (
+      {selectedImage && windowWidth >= 1000 && (
         <Lightbox setSelectedImage={setSelectedImage} img={selectedImage} />
       )}
     </>

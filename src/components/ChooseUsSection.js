@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BsCheck2Circle } from 'react-icons/bs';
-import ConsumerUnitImage from '../assets/consumer_unit.jpg';
+import ConsumerUnitImage from '../assets/consumer_unit.webp';
 import { motion } from 'framer-motion';
 import { fade } from '../animation';
 import { useScroll } from './useScroll';
