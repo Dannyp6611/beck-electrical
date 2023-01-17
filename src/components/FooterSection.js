@@ -12,9 +12,9 @@ const FooterSection = () => {
     <StyledFooter>
       <div className="container">
         <div className="footer-header">
-          <a href="/">
+          <Link to="hero">
             <img className="logo" src={logo} alt="Beck Electrical Logo" />
-          </a>
+          </Link>
           <img
             src={niceic}
             className="niceic-logo"
@@ -98,6 +98,7 @@ const FooterSection = () => {
                 href="https://en-gb.facebook.com/beckelectricalservices/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Read more about Beck Electrical Services on Facebook"
               >
                 <FaFacebookF />
               </a>
@@ -107,6 +108,7 @@ const FooterSection = () => {
                 href="https://www.instagram.com/beckelectricalservices/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Read more about Beck Electrical Services on Instagram"
               >
                 <FaInstagram />
               </a>

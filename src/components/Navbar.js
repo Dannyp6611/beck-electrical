@@ -102,7 +102,10 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          <button onClick={() => setMobileNav(true)}>
+          <button
+            onClick={() => setMobileNav(true)}
+            aria-label="Hamburger Menu"
+          >
             <FaBars className="hamburger-icon" size={30} />
           </button>
         </div>
@@ -191,6 +194,7 @@ const StyledNav = styled.nav`
       text-decoration: none;
       color: currentColor;
       font-weight: 600;
+      font-size: 1.8rem;
 
       @media only screen and (max-width: 1200px) {
         font-size: 1.6rem;

@@ -21,7 +21,7 @@ const ContactForm = () => {
       )
       .then(
         (result) => {
-          toast.success('Message sent', {
+          toast.success('Message sent successfully', {
             position: 'top-right',
             autoClose: 3000,
             hideProgressBar: false,
@@ -45,6 +45,8 @@ const ContactForm = () => {
           });
         }
       );
+
+    form.current.reset();
   };
 
   return (
@@ -80,7 +82,6 @@ const ContactForm = () => {
         </FormControl>
         <button type="submit">Submit Message</button>
       </StyledContactForm>
-      {/* <button onClick={notify}>Test</button> */}
       <ToastContainer />
     </>
   );
