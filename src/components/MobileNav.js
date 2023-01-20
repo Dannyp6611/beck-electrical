@@ -89,9 +89,9 @@ const MobileNav = ({ setMobileNav, mobileNav }) => {
             </a>
           </li>
           <li>
-            <a href="mailto:info@beckelectricalservices.co.uk">
+            <a href="mailto:infobeckelectricalservices@gmail.com">
               <AiFillMail size={20} />
-              <strong>info@beckelectricalservices.co.uk</strong>
+              <strong>infobeckelectricalservices@gmail.com</strong>
             </a>
           </li>
         </ul>

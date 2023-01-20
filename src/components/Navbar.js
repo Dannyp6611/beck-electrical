@@ -96,9 +96,9 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="mailto:info@beckelectricalservices.co.uk">
+              <a href="mailto:infobeckelectricalservices@gmail.com">
                 <AiFillMail size={20} />
-                info@beckelectricalservices.co.uk
+                infobeckelectricalservices@gmail.com
               </a>
             </li>
           </ul>

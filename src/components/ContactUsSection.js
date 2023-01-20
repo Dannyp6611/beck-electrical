@@ -42,10 +42,10 @@ const ContactUsSection = () => {
               </a>
             </li>
             <li>
-              <a href="mailto:info@beckelectricalservices.co.uk">
+              <a href="mailto:infobeckelectricalservices@gmail.com">
                 <GrMail className="icon" size={30} />
                 <h3>Email</h3>
-                <strong>info@beckelectricalservices.co.uk</strong>
+                <strong>infobeckelectricalservices@gmail.com</strong>
               </a>
               <p></p>
             </li>
